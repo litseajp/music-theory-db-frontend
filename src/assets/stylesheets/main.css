@@ -1,1 +1,7 @@
 @import './base.css';
+
+/* Texts */
+h1 {
+  color: var(--text-color);
+  font-weight: 400;
+}
