@@ -32,6 +32,7 @@
 
   h2 {
     padding-top: 2px;
+    line-height: 1.5;
   }
 
   span {
