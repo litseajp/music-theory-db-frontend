@@ -1,7 +1,7 @@
 @import './base.css';
 
 /* Texts */
-h1, h2, h3 {
+h1, h2, h3, p {
   color: var(--text-primary-color);
 }
 
@@ -26,4 +26,9 @@ span.v-btn__content {
   color: var(--text-primary-color);
   font-size: 1rem;
   font-weight: 400;
+}
+
+th.v-data-table__th, td.v-data-table__td {
+  color: var(--text-primary-color);
+  font-size: 1.125rem;
 }
