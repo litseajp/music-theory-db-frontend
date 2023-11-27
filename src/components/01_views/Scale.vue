@@ -5,6 +5,7 @@
   import ToneTable from '@/components/02_sections/scale/ToneTable.vue'
   import KeyboardDiagram from '@/components/02_sections/scale/KeyboardDiagram.vue'
   import FretboardDiagram from '@/components/02_sections/scale/FretboardDiagram.vue'
+  import DataFetchError from '@/components/02_sections/DataFetchError.vue'
   import { tonicNotesSharp, tonicNotesFlat } from '@/consts/tonicNotes'
   import type { Scale } from '@/types/interfaces'
   import { scaleKey } from '@/types/injectionKeys'
@@ -49,7 +50,7 @@
     </div>
   </template>
   <template v-else>
-    ERROR
+    <DataFetchError />
   </template>
 </template>
 

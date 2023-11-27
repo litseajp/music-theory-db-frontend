@@ -2,6 +2,7 @@
   import { ref, onMounted } from 'vue'
   import axios from 'axios'
   import ScaleList from '@/components/02_sections/scales/ScaleList.vue'
+  import DataFetchError from '@/components/02_sections/DataFetchError.vue'
   import type { ScaleCategory }  from '@/types/interfaces'
 
   const data = ref<ScaleCategory[]>([])
@@ -25,7 +26,7 @@
     <ScaleList :scaleCategories="data" class="mt-3" />
   </template>
   <template v-else>
-    ERROR
+    <DataFetchError />
   </template>
 </template>
 
