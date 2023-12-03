@@ -13,7 +13,7 @@
 
 <template>
   <section id="tool-list">
-    <ToolListItem v-for="itemAttrs in itemAttrsList" :attrs="itemAttrs" />
+    <ToolListItem v-for="itemAttrs in itemAttrsList" :key="itemAttrs.path" :attrs="itemAttrs" />
   </section>
 </template>
 

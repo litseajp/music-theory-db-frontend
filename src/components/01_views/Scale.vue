@@ -38,7 +38,9 @@
   <template v-if="!errorFlg">
     <h1>{{ data.name }}</h1>
     <div id="description">
-      <h2 class="mt-3">説明</h2>
+      <h2 class="mt-3">
+        説明
+      </h2>
       <p v-html="data.description" />
     </div>
     <ToneTable class="mt-6" />
@@ -46,7 +48,9 @@
     <FretboardDiagram class="mt-8" />
     <div id="backward-link" class="mt-10">
       <v-icon icon="mdi-chevron-left" />
-      <router-link to="/scales">スケール一覧へ戻る</router-link>
+      <router-link to="/scales">
+        スケール一覧へ戻る
+      </router-link>
     </div>
   </template>
   <template v-else>

@@ -23,7 +23,7 @@
 <template>
   <template v-if="!errorFlg">
     <h1>スケール一覧</h1>
-    <ScaleList :scaleCategories="data" class="mt-3" />
+    <ScaleList :scale-categories="data" class="mt-3" />
   </template>
   <template v-else>
     <DataFetchError />

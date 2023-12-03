@@ -7,7 +7,7 @@
 <template>
   <v-app-bar absolute border flat height="60">
     <div id="app-bar-container" class="mx-auto">
-      <router-link to="/" id="app-bar-logo" class="ml-4">
+      <router-link id="app-bar-logo" to="/" class="ml-4">
         MusicTheoryDB
       </router-link>
       <div id="app-bar-links" class="ml-10">

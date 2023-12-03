@@ -8,7 +8,7 @@
 <template>
   <section id="scale-list">
     <div v-for="scaleCategory in scaleCategories" :key="scaleCategory.category" class="scale-category">
-      <ScaleTable :scaleCategory="scaleCategory" />
+      <ScaleTable :scale-category="scaleCategory" />
     </div>
   </section>
 </template>

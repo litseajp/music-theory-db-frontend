@@ -40,9 +40,9 @@
       </tr>
       <tr v-for="i in 4" :key="i">
         <td v-for="(note, j) in notesOnFretboard[i + 1]" :key="note">
-          <div class="inlay" v-if="i == 1 && j === 12" />
-          <div class="inlay" v-if="i == 2 && [3, 5, 7, 9].includes(j)" />
-          <div class="inlay" v-if="i == 3 && j === 12" />
+          <div v-if="i == 1 && j === 12" class="inlay" />
+          <div v-if="i == 2 && [3, 5, 7, 9].includes(j)" class="inlay" />
+          <div v-if="i == 3 && j === 12" class="inlay" />
           <div v-if="Object.keys(scaleTones).includes(note)" class="marker">
             <img :src="`/src/assets/images/intervals/${scaleTones[note]}_white.png`" />
           </div>

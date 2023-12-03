@@ -16,7 +16,7 @@
         </div>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        <TonicSelector :scalePath="scale.path" />
+        <TonicSelector :scale-path="scale.path" />
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
