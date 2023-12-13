@@ -1,7 +1,34 @@
 @import './base.css';
 
 /* Texts */
+h1, h2, h3, p {
+  color: var(--text-primary-color);
+}
+
 h1 {
-  color: var(--text-color);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 1.625rem;
+  font-weight: 500;
+  line-height: 2;
+}
+
+h3 {
+  font-size: 1.25rem;
   font-weight: 400;
+}
+
+span.v-btn__content {
+  color: var(--text-primary-color);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+th.v-data-table__th, td.v-data-table__td {
+  color: var(--text-primary-color);
+  font-size: 1.125rem;
 }

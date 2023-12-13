@@ -12,7 +12,7 @@
 
 <style scoped>
   address, a {
-    color: var(--text-color);
+    color: var(--text-primary-color);
   }
 
   address {
