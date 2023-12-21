@@ -16,3 +16,13 @@ export interface Scale {
     tone_type: string
   }[]
 }
+
+export interface ChordCategory {
+  category: string
+  chords: {
+    path: string
+    quality: string
+    name: string
+    description: string
+  }[]
+}

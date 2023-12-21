@@ -1,22 +1,22 @@
 <script setup lang="ts">
   import TonicSelector from '../TonicSelector.vue'
-  import { type ScaleCategory }  from '@/types/interfaces'
+  import { type ChordCategory }  from '@/types/interfaces'
 
-  defineProps<{ scaleCategory: ScaleCategory }>()
+  defineProps<{ chordCategory: ChordCategory }>()
 </script>
 
 <template>
-  <h2>{{ scaleCategory.category }}</h2>
+  <h2>{{ chordCategory.category }}</h2>
   <v-expansion-panels variant="accordion">
-    <v-expansion-panel v-for="scale in scaleCategory.scales" :key="scale.path" elevation="0">
+    <v-expansion-panel v-for="chord in chordCategory.chords" :key="chord.path" elevation="0">
       <v-expansion-panel-title>
         <div>
-          <h3>{{ scale.name }}</h3>
-          <span>{{ scale.description }}</span>
+          <h3>{{ chord.quality }}（{{ chord.name }}）</h3>
+          <span>{{ chord.description }}</span>
         </div>
       </v-expansion-panel-title>
       <v-expansion-panel-text>
-        <TonicSelector :path="`/scales/${scale.path}`" />
+        <TonicSelector :path="`/chords/${chord.path}`" />
       </v-expansion-panel-text>
     </v-expansion-panel>
   </v-expansion-panels>
