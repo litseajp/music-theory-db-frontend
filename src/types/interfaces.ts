@@ -26,3 +26,22 @@ export interface ChordCategory {
     description: string
   }[]
 }
+
+export interface Position {
+  string1: number
+  string2: number
+  string3: number
+  string4: number
+  string5: number
+  string6: number
+}
+
+export interface Chord {
+  name: string
+  description: string
+  tones: {
+    interval: string
+    note: string
+  }[]
+  positions: Position[]
+}

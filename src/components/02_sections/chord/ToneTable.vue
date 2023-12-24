@@ -2,32 +2,29 @@
   import { computed, inject, type Ref } from 'vue'
   import { VDataTable } from 'vuetify/labs/VDataTable'
   import intervalDict from '@/consts/intervalDict'
-  import type { Scale } from '@/types/interfaces'
-  import { scaleKey } from '@/types/injectionKeys'
+  import type { Chord } from '@/types/interfaces'
+  import { chordKey } from '@/types/injectionKeys'
   import formatNote from '@/utils/formatNote'
 
-  const scale = inject(scaleKey) as Ref<Scale>
+  const chord = inject(chordKey) as Ref<Chord>
 
   const headers = [
-    { title: '音程', key: 'interval', sortable: false, width: '25%' },
-    { title: '音名', key: 'note', sortable: false, width: '25%' },
-    { title: '種類', key: 'toneType', sortable: false, width: '50%' }
+    { title: '音程', key: 'interval', sortable: false, width: '50%' },
+    { title: '音名', key: 'note', sortable: false, width: '50%' }
   ]
 
   interface TableItem {
     interval: string
     note: string
-    toneType: string
   }
 
   const tableItems = computed(() => {
     const result: TableItem[] = []
 
-    scale.value.tones?.forEach(tone => {
+    chord.value.tones?.forEach(tone => {
       result.push({
         interval: intervalDict[tone.interval],
-        note: formatNote(tone.note),
-        toneType: tone.tone_type
+        note: formatNote(tone.note)
       })
     })
 
@@ -46,6 +43,6 @@
 
 <style scoped>
   .v-data-table {
-    width: 660px;
+    width: 360px;
   }
 </style>
