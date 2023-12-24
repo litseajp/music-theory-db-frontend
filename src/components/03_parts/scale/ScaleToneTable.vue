@@ -36,12 +36,9 @@
 </script>
 
 <template>
-  <section id="tone-table">
-    <h2>構成音一覧</h2>
-    <v-data-table :headers="headers" :items="tableItems" density="comfortable">
-      <template #bottom />
-    </v-data-table>
-  </section>
+  <v-data-table :headers="headers" :items="tableItems" density="comfortable">
+    <template #bottom />
+  </v-data-table>
 </template>
 
 <style scoped>

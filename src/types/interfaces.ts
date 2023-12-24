@@ -27,6 +27,11 @@ export interface ChordCategory {
   }[]
 }
 
+export interface Tone {
+  interval: string
+  note: string
+}
+
 export interface Position {
   string1: number
   string2: number
@@ -39,9 +44,6 @@ export interface Position {
 export interface Chord {
   name: string
   description: string
-  tones: {
-    interval: string
-    note: string
-  }[]
+  tones: Tone[]
   positions: Position[]
 }

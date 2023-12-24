@@ -1,15 +1,17 @@
 <script setup lang="ts">
-  import { ref, onMounted, provide } from 'vue'
+  import { computed, onMounted, provide, ref } from 'vue'
   import { useRoute } from 'vue-router'
   import axios from 'axios'
-  import ToneTable from '@/components/02_sections/chord/ToneTable.vue'
-  import KeyboardDiagram from '@/components/02_sections/chord/KeyboardDiagram.vue'
-  import FretboardDiagram from '@/components/02_sections/chord/FretboardDiagram.vue'
+  import PageDescription from '@/components/02_sections/PageDescription.vue'
+  import ChordToneList from '@/components/02_sections/chord/ChordToneList.vue'
+  import KeyboardDiagram from '@/components/02_sections/KeyboardDiagram.vue'
+  import FretboardDiagram from '@/components/02_sections/FretboardDiagram.vue'
   import GuitarPositionList from '@/components/02_sections/chord/GuitarPositionList.vue'
+  import BackwardLink from '@/components/02_sections/BackwardLink.vue'
   import DataFetchError from '@/components/02_sections/DataFetchError.vue'
   import { tonicNotesSharp, tonicNotesFlat } from '@/consts/tonicNotes'
   import type { Chord } from '@/types/interfaces'
-  import { chordKey } from '@/types/injectionKeys'
+  import { chordKey, tonesKey } from '@/types/injectionKeys'
 
   const route = useRoute()
   const rootParam = route.query.root as string
@@ -33,27 +35,22 @@
 
   onMounted(fetchChord)
   provide(chordKey, data)
+
+  const tones = computed(() => data.value.tones)
+  provide(tonesKey, tones)
+
+  const linkAttrs = { path: 'scales', heading: 'コード一覧' }
 </script>
 
 <template>
   <template v-if="!errorFlg">
     <h1>{{ data.name }}</h1>
-    <div id="description">
-      <h2 class="mt-3">
-        説明
-      </h2>
-      <p v-html="data.description" />
-    </div>
-    <ToneTable class="mt-6" />
+    <PageDescription :p-text="data.description" class="mt-3" />
+    <ChordToneList class="mt-6" />
     <KeyboardDiagram class="mt-5" />
     <FretboardDiagram class="mt-8" />
     <GuitarPositionList class="mt-8" />
-    <div id="backward-link" class="mt-8">
-      <v-icon icon="mdi-chevron-left" />
-      <router-link to="/chords">
-        コード一覧へ戻る
-      </router-link>
-    </div>
+    <BackwardLink :attrs="linkAttrs" class="mt-8" />
   </template>
   <template v-else>
     <DataFetchError />
@@ -61,12 +58,4 @@
 </template>
 
 <style scoped>
-  p {
-    font-size: 1.125rem;
-  }
-
-  #backward-link a {
-    color: var(--text-primary-color);
-    font-size: 1.125rem;
-  }
 </style>

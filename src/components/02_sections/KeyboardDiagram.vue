@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Keyboard from '@/components/03_parts/chord/Keyboard.vue'
+  import Keyboard from '@/components/03_parts/Keyboard.vue'
 </script>
 
 <template>

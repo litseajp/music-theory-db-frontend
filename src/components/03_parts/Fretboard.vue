@@ -1,20 +1,28 @@
 <script setup lang="ts">
   import { computed, inject, type Ref } from 'vue'
-  import notesOnFretboard from '@/consts/notesOnFretboard'
-  import type { Chord } from '@/types/interfaces'
-  import { chordKey } from '@/types/injectionKeys'
+  import type { Tone } from '@/types/interfaces'
+  import { tonesKey } from '@/types/injectionKeys'
   import handleEnharmonicNote from '@/utils/handleEnharmonicNote'
 
-  const chord = inject(chordKey) as Ref<Chord>
+  const tones = inject(tonesKey) as Ref<Tone[]>
 
-  const chordTones = computed(() => {
+  const noteIntervalMap = computed(() => {
     const result: { [key: string]: string } = {}
 
-    chord.value.tones?.forEach(tone => {
+    tones.value?.forEach(tone => {
       result[handleEnharmonicNote(tone.note)] = tone.interval
     })
     return result
   })
+
+  const notesOnFretboard = [
+    ['e', 'f', 'fsharp', 'g', 'gsharp', 'a', 'asharp', 'b', 'c', 'csharp', 'd', 'dsharp', 'e'],
+    ['b', 'c', 'csharp', 'd', 'dsharp', 'e', 'f', 'fsharp', 'g', 'gsharp', 'a', 'asharp', 'b'],
+    ['g', 'gsharp', 'a', 'asharp', 'b', 'c', 'csharp', 'd', 'dsharp', 'e', 'f', 'fsharp', 'g'],
+    ['d', 'dsharp', 'e', 'f', 'fsharp', 'g', 'gsharp', 'a', 'asharp', 'b', 'c', 'csharp', 'd'],
+    ['a', 'asharp', 'b', 'c', 'csharp', 'd', 'dsharp', 'e', 'f', 'fsharp', 'g', 'gsharp', 'a'],
+    ['e', 'f', 'fsharp', 'g', 'gsharp', 'a', 'asharp', 'b', 'c', 'csharp', 'd', 'dsharp', 'e']
+  ]
 </script>
 
 <template>
@@ -22,11 +30,11 @@
     <table>
       <tr>
         <td v-for="i in 13" :key="i">
-          <div v-if="Object.keys(chordTones).includes(notesOnFretboard[0][i - 1])" class="marker hi-e">
-            <img :src="`/src/assets/images/intervals/${chordTones[notesOnFretboard[0][i - 1]]}_white.png`" />
+          <div v-if="Object.keys(noteIntervalMap).includes(notesOnFretboard[0][i - 1])" class="marker hi-e">
+            <img :src="`/src/assets/images/intervals/${noteIntervalMap[notesOnFretboard[0][i - 1]]}_white.png`" />
           </div>
-          <div v-if="Object.keys(chordTones).includes(notesOnFretboard[1][i - 1])" class="marker">
-            <img :src="`/src/assets/images/intervals/${chordTones[notesOnFretboard[1][i - 1]]}_white.png`" />
+          <div v-if="Object.keys(noteIntervalMap).includes(notesOnFretboard[1][i - 1])" class="marker">
+            <img :src="`/src/assets/images/intervals/${noteIntervalMap[notesOnFretboard[1][i - 1]]}_white.png`" />
           </div>
         </td>
       </tr>
@@ -35,8 +43,8 @@
           <div v-if="i == 1 && j === 12" class="inlay" />
           <div v-if="i == 2 && [3, 5, 7, 9].includes(j)" class="inlay" />
           <div v-if="i == 3 && j === 12" class="inlay" />
-          <div v-if="Object.keys(chordTones).includes(note)" class="marker">
-            <img :src="`/src/assets/images/intervals/${chordTones[note]}_white.png`" />
+          <div v-if="Object.keys(noteIntervalMap).includes(note)" class="marker">
+            <img :src="`/src/assets/images/intervals/${noteIntervalMap[note]}_white.png`" />
           </div>
         </td>
       </tr>

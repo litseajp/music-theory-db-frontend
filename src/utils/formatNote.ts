@@ -1,4 +1,4 @@
-const symbols: { [key: string]: string } = { 'sharp': '♯', 'flat': '♭', 'doublesharp': '♯♯', 'doubleflat': '♭♭', 'natural': '♮' }
+const symbols: { [key: string]: string } = { 'sharp': '♯', 'flat': '♭', 'doublesharp': '♯♯', 'doubleflat': '♭♭' }
 
 export default function formatNote(str: string): string  {
   if (str.length === 1) {
