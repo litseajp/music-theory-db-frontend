@@ -43,6 +43,6 @@
 
 <style scoped>
   .v-data-table {
-    width: 660px;
+    width: 640px;
   }
 </style>

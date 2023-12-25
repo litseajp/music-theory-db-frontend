@@ -251,15 +251,15 @@
   }
 
   tr.upper {
-    height: 150px;
+    height: 140px;
   }
 
   tr.lower {
-    height: 75px;
+    height: 70px;
   }
 
   td {
-    width: 15px;
+    width: 14px;
     position: relative;
     box-sizing: content-box;
     background-color: #aaa;
@@ -288,14 +288,14 @@
   img {
     width: 30px;
     position: absolute;
-    top: 40%;
+    top: 42%;
     left: 50%;
     transform: translate(-50%, 0);
     z-index: 1;
   }
 
   .black img {
-    top: 50%;
+    top: 55%;
     left: 0%;
     transform: none;
   }

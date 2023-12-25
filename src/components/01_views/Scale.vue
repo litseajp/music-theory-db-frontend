@@ -44,11 +44,11 @@
 <template>
   <template v-if="!errorFlg">
     <h1>{{ data.name }}</h1>
-    <PageDescription :p-text="data.description" class="mt-3" />
-    <ScaleToneList class="mt-6" />
-    <KeyboardDiagram class="mt-5" />
-    <FretboardDiagram class="mt-8" />
-    <BackwardLink :attrs="linkAttrs" class="mt-10" />
+    <PageDescription :p-text="data.description" class="mt-8" />
+    <ScaleToneList class="mt-8" />
+    <KeyboardDiagram class="mt-8" />
+    <FretboardDiagram class="mt-10" />
+    <BackwardLink :attrs="linkAttrs" class="mt-13" />
   </template>
   <template v-else>
     <DataFetchError />

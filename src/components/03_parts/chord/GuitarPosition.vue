@@ -57,38 +57,39 @@
   }
 
   tr {
-    height: 27px;
+    height: 30px;
   }
 
   td {
-    width: 54px;
+    width: 63px;
     border: solid 2px #333;
     position: relative;
   }
 
   td:first-child {
-    width: 36px;
+    width: 42px;
     border: none;
   }
 
   td.zero-fret {
-    border-right: solid 6px #333;
+    border-right: solid 8px #333;
   }
 
   tr.fret-number {
-    height: 54px;
+    height: 45px;
   }
   
   tr.fret-number td {
     border: none;
     text-align: center;
+    vertical-align: bottom;
     color: var(--text-primary-color);
     font-size: 1.375rem;
   }
 
   img, .marker {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     position: absolute;
     top: 100%;
     left: 50%;
