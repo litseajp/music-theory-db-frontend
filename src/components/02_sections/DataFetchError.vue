@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <section>
+  <section id="data-fetch-error">
     <h1>通信エラー</h1>
     <p class="mt-8 text-center">
       データの取得に失敗しました。

@@ -14,6 +14,9 @@
         <router-link to="/scales" :class="{ 'current-tool': route.path.includes('scales') }">
           スケール
         </router-link>
+        <router-link to="/chords" :class="{ 'current-tool': route.path.includes('chords') }" class="ml-8">
+          コード
+        </router-link>
       </div>
     </div>
   </v-app-bar>

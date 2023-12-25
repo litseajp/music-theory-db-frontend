@@ -3,7 +3,7 @@
   import { tonicNotesSharp, tonicNotesFlat } from '@/consts/tonicNotes'
   import formatNote from '@/utils/formatNote'
 
-  defineProps<{ scalePath: string }>()
+  defineProps<{ path: string }>()
 
   const sharpMode = ref(true)
   const tonicNotes = computed(() => sharpMode.value ? tonicNotesSharp : tonicNotesFlat)
@@ -15,7 +15,7 @@
 
 <template>
   <v-btn-toggle divided variant="outlined" class="my-2">
-    <v-btn v-for="tonic in tonicNotes" :key="tonic" :to="`/scales/${scalePath}?tonic=${tonic}`" min-width="48">
+    <v-btn v-for="tonic in tonicNotes" :key="tonic" :to="`${path}?${path.includes('scale') ? 'tonic' : 'root'}=${tonic}`" min-width="48">
       {{ formatNote(tonic) }}
     </v-btn>
   </v-btn-toggle>

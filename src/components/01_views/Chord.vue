@@ -3,51 +3,53 @@
   import { useRoute } from 'vue-router'
   import axios from 'axios'
   import PageDescription from '@/components/02_sections/PageDescription.vue'
-  import ScaleToneList from '@/components/02_sections/scale/ScaleToneList.vue'
+  import ChordToneList from '@/components/02_sections/chord/ChordToneList.vue'
   import KeyboardDiagram from '@/components/02_sections/KeyboardDiagram.vue'
   import FretboardDiagram from '@/components/02_sections/FretboardDiagram.vue'
+  import GuitarPositionList from '@/components/02_sections/chord/GuitarPositionList.vue'
   import BackwardLink from '@/components/02_sections/BackwardLink.vue'
   import DataFetchError from '@/components/02_sections/DataFetchError.vue'
   import { tonicNotesSharp, tonicNotesFlat } from '@/consts/tonicNotes'
-  import type { Scale } from '@/types/interfaces'
-  import { scaleKey, tonesKey } from '@/types/injectionKeys'
+  import type { Chord } from '@/types/interfaces'
+  import { chordKey, tonesKey } from '@/types/injectionKeys'
 
   const route = useRoute()
-  const tonicParam = route.query.tonic as string
+  const rootParam = route.query.root as string
 
-  const data = ref<Scale>({name: '', description: '', tones: []})
+  const data = ref<Chord>({name: '', description: '', tones: [], positions: []})
   const errorFlg = ref(false)
 
-  const fetchScale = async () => {
+  const fetchChord = async () => {
     try {
-      if (!tonicNotesSharp.includes(tonicParam) && !tonicNotesFlat.includes(tonicParam)) {
+      if (!tonicNotesSharp.includes(rootParam) && !tonicNotesFlat.includes(rootParam)) {
         errorFlg.value = true
         return
       }
 
-      const response = await axios.get(`/scales/${route.params.scale}?tonic=${tonicParam}`)
+      const response = await axios.get(`/chords/${route.params.chord}?root=${rootParam}`)
       data.value = response.data
     } catch (error) {
       errorFlg.value = true
     }
   }
 
-  onMounted(fetchScale)
-  provide(scaleKey, data)
+  onMounted(fetchChord)
+  provide(chordKey, data)
 
   const tones = computed(() => data.value.tones)
   provide(tonesKey, tones)
 
-  const linkAttrs = { path: 'scales', heading: 'スケール一覧' }
+  const linkAttrs = { path: 'scales', heading: 'コード一覧' }
 </script>
 
 <template>
   <template v-if="!errorFlg">
     <h1>{{ data.name }}</h1>
     <PageDescription :p-text="data.description" class="mt-8" />
-    <ScaleToneList class="mt-8" />
+    <ChordToneList class="mt-8" />
     <KeyboardDiagram class="mt-8" />
     <FretboardDiagram class="mt-10" />
+    <GuitarPositionList class="mt-10" />
     <BackwardLink :attrs="linkAttrs" class="mt-13" />
   </template>
   <template v-else>

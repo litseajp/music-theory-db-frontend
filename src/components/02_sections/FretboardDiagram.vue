@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import Fretboard from '@/components/03_parts/scale/Fretboard.vue'
+  import Fretboard from '@/components/03_parts/Fretboard.vue'
 </script>
 
 <template>
